@@ -107,13 +107,16 @@
 #define RADIO_SHORTS_END_DISABLE			(1 << 1)
 #define RADIO_SHORTS_DISABLED_TXEN			(1 << 2)
 #define RADIO_SHORTS_DISABLED_RXEN			(1 << 3)
-#define RADIO_SHORTS_ADDRESS_RSSISTART			(1 << 4)
-#define RADIO_SHORTS_END_START			(1 << 5)
-#define RADIO_SHORTS_ADDRESS_BCSTART			(1 << 6)
-#define RADIO_SHORTS_DISABLED_RSSISTOP			(1 << 8)
-#define RADIO_SHORTS_RXREADY_CCASTART			(1 << 11)
+#define RADIO_SHORTS_ADDRESS_RSSISTART		(1 << 4)
+#define RADIO_SHORTS_END_START				(1 << 5)
+#define RADIO_SHORTS_ADDRESS_BCSTART		(1 << 6)
+#define RADIO_SHORTS_DISABLED_RSSISTOP		(1 << 8)
+#define RADIO_SHORTS_RXREADY_CCASTART		(1 << 11)
 #define RADIO_SHORTS_CCAIDLE_TXEN			(1 << 12)
+#define RADIO_SHORTS_CCABUSY_DISABLE		(1 << 13)
+#define RADIO_SHORTS_CCAIDLE_STOP			(1 << 17)
 #define RADIO_SHORTS_TXREADY_START			(1 << 18)
+#define RADIO_SHORTS_PHYEND_DISABLE			(1 << 20)
 
 /**@}*/
 
@@ -314,8 +317,8 @@ void radio_set_datawhiteiv(uint8_t iv);
 void radio_set_addr(uint8_t addr_index, uint32_t base, uint8_t prefix);
 void radio_set_tx_address(uint8_t addr_index);
 void radio_set_packet_ptr(uint8_t *packet_ptr);
-void radio_enable_shorts(uint16_t shorts);
-void radio_disable_shorts(uint16_t shorts);
+void radio_enable_shorts(uint32_t shorts);
+void radio_disable_shorts(uint32_t shorts);
 void radio_clear_shorts(void);
 void radio_enable_tx(void);
 void radio_enable_rx(void);

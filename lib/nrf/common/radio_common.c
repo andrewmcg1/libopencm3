@@ -233,12 +233,12 @@ void radio_set_packet_ptr(uint8_t *packet_ptr)
 	RADIO_PACKETPTR = (uint32_t)packet_ptr;
 }
 
-void radio_enable_shorts(uint16_t shorts)
+void radio_enable_shorts(uint32_t shorts)
 {
 	RADIO_SHORTS |= shorts;
 }
 
-void radio_disable_shorts(uint16_t shorts)
+void radio_disable_shorts(uint32_t shorts)
 {
 	RADIO_SHORTS &= ~shorts;
 }
