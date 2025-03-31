@@ -45,6 +45,9 @@
 #define RADIO_TASK_RSSISTOP			MMIO32(RADIO_BASE + 0x018)
 #define RADIO_TASK_BCSTART			MMIO32(RADIO_BASE + 0x01C)
 #define RADIO_TASK_BCSTOP			MMIO32(RADIO_BASE + 0x020)
+#define RADIO_TASK_EDSTART			MMIO32(RADIO_BASE + 0x024)
+#define RADIO_TASK_EDSTOP			MMIO32(RADIO_BASE + 0x028)
+
 
 /* Events */
 
@@ -56,6 +59,7 @@
 #define RADIO_EVENT_DEVMATCH			MMIO32(RADIO_BASE + 0x114)
 #define RADIO_EVENT_DEVMISS			MMIO32(RADIO_BASE + 0x118)
 #define RADIO_EVENT_RSSIEND			MMIO32(RADIO_BASE + 0x11C)
+#define RADIO_EVENTS_EDEND			MMIO32(RADIO_BASE + 0x13C)
 
 /* Registers */
 
@@ -93,6 +97,9 @@
 /* Device Address Prefix segment */
 #define RADIO_DAP(n)			MMIO32(RADIO_BASE + 0x620 + 0x4 * (n))
 #define RADIO_DACNF			MMIO32(RADIO_BASE + 0x640)
+
+#define RADIO_EDSAMPLE			MMIO32(RADIO_BASE + 0x668)
+#define RADIO_CCACTRL			MMIO32(RADIO_BASE + 0x66C)
 
 /* Override Registers */
 #define RADIO_OVERRIDE(n)			MMIO32(RADIO_BASE + 0x724 + 0x4 * (n))
@@ -320,6 +327,10 @@ void radio_set_packet_ptr(uint8_t *packet_ptr);
 void radio_enable_shorts(uint32_t shorts);
 void radio_disable_shorts(uint32_t shorts);
 void radio_clear_shorts(void);
+void radio_start_ed(void);
+void radio_stop_ed(void);
+uint8_t radio_get_ed(void);
+void radio_set_ccamode(uint8_t ccamode);
 void radio_enable_tx(void);
 void radio_enable_rx(void);
 void radio_set_maxlen(uint8_t maxlen);

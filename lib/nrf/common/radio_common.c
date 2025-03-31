@@ -248,6 +248,37 @@ void radio_clear_shorts(void)
 	RADIO_SHORTS = 0;
 }
 
+void radio_start_ed(void)
+{
+	PERIPH_TRIGGER_TASK(RADIO_TASK_EDSTART);
+}
+
+void radio_stop_ed(void)
+{
+	PERIPH_TRIGGER_TASK(RADIO_TASK_EDSTOP);
+}
+
+uint8_t radio_get_ed(void)
+{
+	radio_start_ed();
+    while (RADIO_EVENTS_EDEND != 1) {
+        // CPU can sleep here or do something else
+        // Use of interrupts are encouraged
+        }
+    return (uint8_t)(RADIO_EDSAMPLE);    // Convert to IEEE 802.15.4 scale
+}
+
+void radio_set_ccamode(uint8_t ccamode)
+{
+	if (ccamode == 1)
+	{
+		uint8_t ccaedthres = RADIO_CCACTRL + (0x01);
+		uint8_t ed = radio_get_ed();
+		ccaedthres = ed;
+	}
+	RADIO_CCACTRL = ccamode;
+}
+
 /* @brief Enable radio Transmitter */
 void radio_enable_tx(void)
 {
