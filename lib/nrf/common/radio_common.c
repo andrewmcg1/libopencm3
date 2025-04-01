@@ -261,7 +261,7 @@ void radio_stop_ed(void)
 uint8_t radio_get_ed(void)
 {
 	radio_start_ed();
-    while (RADIO_EVENTS_EDEND != 1) {
+    while (RADIO_EVENT_EDEND != 1) {
         // CPU can sleep here or do something else
         // Use of interrupts are encouraged
         }
