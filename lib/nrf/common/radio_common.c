@@ -270,12 +270,6 @@ uint8_t radio_get_ed(void)
 
 void radio_set_ccamode(uint8_t ccamode)
 {
-	if (ccamode == 0)
-	{
-		uint8_t ccaedthres = RADIO_CCACTRL + (0x01);
-		uint8_t ed = radio_get_ed();
-		ccaedthres = ed;
-	}
 	RADIO_CCACTRL = ccamode;
 }
 
