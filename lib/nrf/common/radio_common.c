@@ -224,6 +224,17 @@ void radio_set_tx_address(uint8_t addr_index)
 	RADIO_TXADDRESS = addr_index;
 }
 
+/* @brief Set RX address index
+ *
+ * @details The address needs to be previously configured with radio_set_addr()
+ *
+ * @param[in] address_index uint8_t address index (0-7)
+ */
+void radio_set_rx_address(uint8_t addr_index)
+{
+	RADIO_RXADDRESSES |= (1 << addr_index);
+}
+
 /* @brief Set pointer for RX/TX data
  *
  * @param[in] packet_ptr uint8_t* packet buffer address.

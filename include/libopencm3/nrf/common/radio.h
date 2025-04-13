@@ -330,6 +330,7 @@ void radio_set_frequency(uint8_t freq);
 void radio_set_datawhiteiv(uint8_t iv);
 void radio_set_addr(uint8_t addr_index, uint32_t base, uint8_t prefix);
 void radio_set_tx_address(uint8_t addr_index);
+void radio_set_rx_address(uint8_t addr_index);
 void radio_set_packet_ptr(uint8_t *packet_ptr);
 void radio_enable_shorts(uint32_t shorts);
 void radio_disable_shorts(uint32_t shorts);
